@@ -3,9 +3,31 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const savedLists = localStorage.getItem('trello-lists')
+
+const store = new Vuex.Store({
+// export default new Vuex.Store({
+
   state: {
-    lists: []
+    lists: savedLists ? JSON.parse('savedLists'): [
+      {
+        title: 'Backlog',
+        cards: [
+          { body: 'English' },
+          { body: 'Mathematics' },
+        ]
+      },
+      {
+        title: 'Todo',
+        cards: [
+          { body: 'Science' }
+        ]
+      },
+      {
+        title: 'Doing',
+        cards: []
+      }
+    ] 
   },
   mutations: {
     //第一引数でstate, 第二引数ではコミット時に受け取るpayloadを指定できる
@@ -25,3 +47,9 @@ export default new Vuex.Store({
 
   }
 })
+
+store.subscribe((mutation, state) => {
+  localStorage.setItem('trello-lists', JSON.stringify(state.lists))
+})
+
+export default store
