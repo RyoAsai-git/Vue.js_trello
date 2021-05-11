@@ -1,11 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// Vuexを使用するには、Vue.jsの他のプラグインと同様にVue.jsでインスタンスを作る前に use メソッドで登録
 Vue.use(Vuex)
 
 const savedLists = localStorage.getItem('trello-lists')
 
+
+  // Vuexでのデータの流れ
+  // Actions → Mutations → State → Vue Component
+  // state には状態を
+  // getters には state 内の状態を元に算出した値を返す関数
+  // mutations には state のデータを更新する関数
+  // actions にはミューテーションにデータをコミットする関数
 const store = new Vuex.Store({
+  // stateにはデータを格納
+  // stateの参照はgettersで行うことができる
   state: {
     // JSON.parse(取得するデータ)でオブジェクトに変換
     lists: savedLists ? JSON.parse(savedLists): [
@@ -28,7 +38,7 @@ const store = new Vuex.Store({
       }
     ] 
   },
-  
+
   mutations: {
     //第一引数でstate, 第二引数ではコミット時に受け取るpayloadを指定できる
     addlist(state, payload) {
@@ -49,6 +59,8 @@ const store = new Vuex.Store({
       context.commit('removelist', payload)
     },
   },
+  // アプリケーションの規模がある程度大きくなると、ストアの定義を複数のファイルに分割した方が見通し良い
+  // 分割したファイル名をmodulesでまとめて定義してストアインスタンスを生成
   // modules: {
   // }
   getters: {
