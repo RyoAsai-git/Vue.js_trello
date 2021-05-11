@@ -22,6 +22,7 @@
   import List from './List'
   import { mapState } from 'vuex'
   
+  //export defaultを宣言することでこのコンポーネントを他のコンポーネントからimportして利用することができる
   export default {
     components: {
       ListAdd,
