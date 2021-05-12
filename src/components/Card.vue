@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <button class="close-button" @click="removeCardFromList">
-      ✖︎
+      ×
     </button>
     <div class="body">
       {{ body }}
@@ -29,7 +29,7 @@ export default {
 
   methods: {
     removeCardFromList() {
-      if (confirm('本当にこのカードを削除しますか')) {
+      if(confirm('本当にこのカードを削除しますか？')) {
         this.$store.dispatch('removeCardFromList', { cardIndex: this.cardIndex, listIndex: this.listIndex })
       } 
     }

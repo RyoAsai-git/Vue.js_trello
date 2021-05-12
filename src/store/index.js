@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 // Vuexを使用するには、Vue.jsの他のプラグインと同様にVue.jsでインスタンスを作る前に use メソッドで登録
 Vue.use(Vuex)
 
-
 // localStorage に保存されたデータには保持期間の制限はなく、
 // sessionStorage に保存されたデータはセッションが終わると同時に（ブラウザが閉じられたときに）クリアされる
 // localStorageは保存するデータを「キーと値」のセットで扱います。
@@ -54,8 +53,8 @@ const store = new Vuex.Store({
     },
 
     addCardToList(state, payload) {
-      state.lists[payload.listIndex].card.push({ body: payload.body })
-    }
+      state.lists[payload.listIndex].cards.push({ body: payload.body })
+    },
   },
   actions: {
     //contextはstoreインスタンスのメソッドやプロパティ呼び出すオブジェクトを受け取ることができる引数
@@ -70,7 +69,8 @@ const store = new Vuex.Store({
 
     addCardToList(context, payload) {
       context.commit('addCardToList', payload)
-    }
+    },
+    
   },
   // アプリケーションの規模がある程度大きくなると、ストアの定義を複数のファイルに分割した方が見通し良い
   // 分割したファイル名をmodulesでまとめて定義してストアインスタンスを生成

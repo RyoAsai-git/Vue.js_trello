@@ -4,18 +4,23 @@
       <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">✖️</div>
     </div>
+
+    <!-- カードの配列データをv-forディレクティブで展開 -->
+    <!-- v-bindディレクティブを使ってバインドさせる -->
+    <!-- このcardsデータは、List.vueは持っていないので、新たにBoard.vueからpropsで受け取る必要があります。 -->
     <card v-for="(item, index) in cards"
       :body="item.body"
       :key="item.id"
       :cardIndex="index"
       :listIndex="listIndex"
-    >
-    <card-add :listIndex="listIndex" />
+    />
+    <card-add :listIndex="listIndex"/>
   </div>
 </template>
+
 <script>
-  import CardAdd from './CardAdd.vue'
-  import Card from '.Card.vue'
+  import CardAdd from './CardAdd'
+  import Card from './Card'
 
   export default {
     components: {
@@ -33,11 +38,19 @@
         // 必ず受け取ることを指定
         required: true
       },
+      
+      //Board.vueからcardsデータを受け取り
+      cards: {
+        type: Array,
+        required: true
+      },
+
       listIndex: {
         type: Number,
         required: true
       }
     },
+    
     methods: {
       removeList: function() {
         // confirm 確認ダイアログを表示
