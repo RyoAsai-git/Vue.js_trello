@@ -35,7 +35,7 @@ const store = new Vuex.Store({
           { body: 'Science' }
         ]
       },
-      {
+      {  
         title: 'Doing',
         cards: []
       }
