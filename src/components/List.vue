@@ -4,10 +4,17 @@
       <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">✖️</div>
     </div>
+    <card-add :listIndex="listIndex" />
   </div>
 </template>
 <script>
+  import CardAdd from './CardAdd.vue'
+
   export default {
+    components: {
+      CardAdd
+    },
+
     // propsには親コンポーネントから受け取るデータを定義する
     // 受け取ったデータはdataプロパティと同じようにアクセスできる
     props: {
