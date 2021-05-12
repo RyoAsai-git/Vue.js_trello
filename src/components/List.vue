@@ -8,9 +8,14 @@
 </template>
 <script>
   export default {
+    // propsには親コンポーネントから受け取るデータを定義する
+    // 受け取ったデータはdataプロパティと同じようにアクセスできる
     props: {
       title: {
+        // データの型指定
+        // 文字列
         type: String,
+        // 必ず受け取ることを指定
         required: true
       },
       listIndex: {
@@ -20,7 +25,9 @@
     },
     methods: {
       removeList: function() {
+        // confirm 確認ダイアログを表示
         if (confirm('本当にこのリストを削除しますか?')) {
+          //index.jsのremovelistアクションを呼び出す
           this.$store.dispatch('removelist', { listIndex: this.listIndex })
         }
       },

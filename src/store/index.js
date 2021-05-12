@@ -49,6 +49,7 @@ const store = new Vuex.Store({
     },
 
     removelist(state, payload) {
+      // 第二引数で取り除く要素の数を指定
       state.lists.splice(payload.listIndex, 1)
     },
   },
