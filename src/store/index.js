@@ -52,6 +52,10 @@ const store = new Vuex.Store({
       // 第二引数で取り除く要素の数を指定
       state.lists.splice(payload.listIndex, 1)
     },
+
+    addCardToList(state, payload) {
+      state.lists[payload.listIndex].card.push({ body: payload.body })
+    }
   },
   actions: {
     //contextはstoreインスタンスのメソッドやプロパティ呼び出すオブジェクトを受け取ることができる引数
@@ -63,6 +67,10 @@ const store = new Vuex.Store({
     removelist(context, payload) {
       context.commit('removelist', payload)
     },
+
+    addCardToList(context, payload) {
+      context.commit('addCardToList', payload)
+    }
   },
   // アプリケーションの規模がある程度大きくなると、ストアの定義を複数のファイルに分割した方が見通し良い
   // 分割したファイル名をmodulesでまとめて定義してストアインスタンスを生成
