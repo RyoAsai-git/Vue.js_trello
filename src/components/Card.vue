@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  // Card.vueで利用したいデータをpropsで受け取る
   props: {
     body: {
       type: String,
