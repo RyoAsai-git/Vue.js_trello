@@ -11,5 +11,11 @@
   </form>
 </template>
 <script>
-
+  export default {
+    data: function() {
+      return {
+        body: '',
+      }
+    },
+  }
 </script>
