@@ -98,6 +98,7 @@ const store = new Vuex.Store({
        let count = 0
        state.lists.map(function(content) {
        count += content.cards.length
+       console.log(count);
        return count
       })
     }

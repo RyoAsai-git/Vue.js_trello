@@ -44,9 +44,6 @@
       // totalCardCount() {
       //   return this.$store.getters.totalCardCount
       // }
-      // totalCardCount() {
-      //   return this.$store.getters.totalCardCount
-      // }
     },
   }
 </script>

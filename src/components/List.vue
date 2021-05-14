@@ -5,21 +5,24 @@
       <p class="list-counter">total: {{ totalCardInList }}</p>
       <div class="deletelist" @click="removeList">✖️</div>
     </div>
-
-    <!-- カードの配列データをv-forディレクティブで展開 -->
-    <!-- v-bindディレクティブを使ってバインドさせる -->
-    <!-- このcardsデータは、List.vueは持っていないので、新たにBoard.vueからpropsで受け取る必要があります。 -->
-    <card v-for="(item, index) in cards"
-      :body="item.body"
-      :key="item.id"
-      :cardIndex="index"
-      :listIndex="listIndex"
-    />
+    <!-- ドラッグ&ドロップさせたいコンポーネントは基本的に<draggable>の直下に置く -->
+    <draggable>
+      <!-- カードの配列データをv-forディレクティブで展開 -->
+      <!-- v-bindディレクティブを使ってバインドさせる -->
+      <!-- このcardsデータは、List.vueは持っていないので、新たにBoard.vueからpropsで受け取る必要があります。 -->
+      <card v-for="(item, index) in cards"
+        :body="item.body"
+        :key="item.id"
+        :cardIndex="index"
+        :listIndex="listIndex"
+      />
+    </draggable>
     <card-add :listIndex="listIndex"/>
   </div>
 </template>
 
 <script>
+  import draggable from 'vuedraggable'
   import CardAdd from './CardAdd'
   import Card from './Card'
 
@@ -27,6 +30,7 @@
     components: {
       CardAdd,
       Card,
+      draggable,
     },
 
     // propsには親コンポーネントから受け取るデータを定義する
