@@ -9,12 +9,16 @@
         <!-- : v-bind:の省略系 -->
         <!-- indexは要素が削除された場合に値が変わってしまう。 -->
         <!-- item.idのように一意で変わることのないidを設定するのが良い -->
+
+        
         <list v-for="(item, index) in lists"
           :key = "item.id"
           :title = "item.title"
           :cards = "item.cards"
           :listIndex = "index"
+          @change="movingCard"
         />
+        <!-- ↑changeイベントをハンドルし、movingCardメソッドを発火 -->
         <list-add />
       </div>
     </main>
@@ -45,5 +49,14 @@
       //   return this.$store.getters.totalCardCount
       // }
     },
+
+    methods: {
+      // movingCard: function() {
+      //   this.$store.dispatch('updateList', {lists: this.lists })
+      // },
+       movingCard: function() {
+        this.$store.dispatch('updateList', { lists: this.lists })
+      }
+    }
   }
 </script>
