@@ -22,7 +22,6 @@
     <!-- @focusin="isEditing = true" -->
     <!-- @focusout="isEditing = false" -->
 
-
     <!-- v-ifでフォームが活性の時（isEditing）と、テキストが入力された時(titleExists)に -->
     <!-- ボタンが表示される -->
     <button type="submit"
@@ -84,6 +83,5 @@
   // dataを加工してテンプレートで使用したいという時は基本的にcomputedでいいのかなと思います！（Date.now()やMath.random()のようにキャッシュが効いてほしくない時は除く）
 
   // methodsは再描画されたときなど呼び出されるたびに処理が実行されます。
-  // startEditingとfinishEditingですが@focusinと@focusoutのイベントに紐づいて処理を行なっている部分なので役割的にmethodsを使うことになります。（データを加工して表示する部分ではない）
 </script>
 

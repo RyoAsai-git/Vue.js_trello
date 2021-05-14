@@ -4,7 +4,7 @@
       my Trello
     </header>
     <main>
-      <p class="info-line">All: 0 tasks</p>
+      <p class="info-line">All: {{ totalCardCount }} tasks</p>
       <div class="list-index">
         <!-- : v-bind:の省略系 -->
         <!-- indexは要素が削除された場合に値が変わってしまう。 -->
@@ -20,6 +20,7 @@
     </main>
   </div>
 </template>
+
 <script>
   import ListAdd from './ListAdd.vue'
   import List from './List'
@@ -39,6 +40,13 @@
       ...mapState([
         'lists'
       ]),
+
+      // totalCardCount() {
+      //   return this.$store.getters.totalCardCount
+      // }
+      // totalCardCount() {
+      //   return this.$store.getters.totalCardCount
+      // }
     },
   }
 </script>
