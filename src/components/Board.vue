@@ -5,11 +5,11 @@
     </header>
     <main>
       <p class="info-line">All: {{ totalCardCount }} tasks</p>
-      <div class="list-index">
+      <!--  -->
+      <draggable class="list-index">
         <!-- : v-bind:の省略系 -->
         <!-- indexは要素が削除された場合に値が変わってしまう。 -->
         <!-- item.idのように一意で変わることのないidを設定するのが良い -->
-
         
         <list v-for="(item, index) in lists"
           :key = "item.id"
@@ -20,12 +20,13 @@
         />
         <!-- ↑changeイベントをハンドルし、movingCardメソッドを発火 -->
         <list-add />
-      </div>
+      </draggable>
     </main>
   </div>
 </template>
 
 <script>
+  import draggable from 'vuedraggable'
   import ListAdd from './ListAdd.vue'
   import List from './List'
   import { mapState } from 'vuex'
@@ -35,6 +36,7 @@
     components: {
       ListAdd,
       List,
+      draggable,
     },
     // computedプロパティでindex.jsのstateのリストデータlistsを取得
     computed: {
