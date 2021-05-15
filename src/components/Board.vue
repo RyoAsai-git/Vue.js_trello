@@ -6,7 +6,10 @@
     <main>
       <p class="info-line">All: {{ totalCardCount }} tasks</p>
       <!--  -->
-      <draggable class="list-index">
+      <draggable :list="lists"
+        @end="movingList"
+        class="list-index">
+        
         <!-- : v-bind:の省略系 -->
         <!-- indexは要素が削除された場合に値が変わってしまう。 -->
         <!-- item.idのように一意で変わることのないidを設定するのが良い -->
@@ -53,10 +56,10 @@
     },
 
     methods: {
-      // movingCard: function() {
-      //   this.$store.dispatch('updateList', {lists: this.lists })
-      // },
-       movingCard: function() {
+      movingCard: function() {
+        this.$store.dispatch('updateList', { lists: this.lists })
+      },
+      movingList: function() {
         this.$store.dispatch('updateList', { lists: this.lists })
       }
     }
