@@ -98,19 +98,11 @@ const store = new Vuex.Store({
   // gettersは第一引数にstate、第二引数に他のgettersを受け取ることができる
   // gettersで算出したものから、さらに何か算出したいという実装も可能
   getters: {
-    // totalCardCount(state) {
-    //   let count = 0
-    //   state.lists.map(content => count += content.cards.length)
-    //   return count
-    // },
     totalCardCount(state) {
-       let count = 0
-       state.lists.map(function(content) {
-       count += content.cards.length
-       console.log(count);
-       return count
-      })
-    }
+      let count = 0
+      state.lists.map(content => count += content.cards.length)
+      return count
+    },
   }
 })
 
