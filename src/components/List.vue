@@ -1,4 +1,6 @@
 <template>
+<!-- divタグが単一のルート要素 -->
+<!-- コンポーネントは必ず単一のルート要素を持つように実装 -->
   <div class="list">
     <div class="listheader">
       <p class="list-title">{{ title }}</p>
