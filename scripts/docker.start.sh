@@ -9,4 +9,4 @@ echo "npm run serve. "
 npm run serve
 
 #メモを出力
-echo "localhost:18080"
+echo "localhost:18080
